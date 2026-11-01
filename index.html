@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prüfungs-Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ansicht 1: Einstellungen -->
+    <div id="settings-view" class="view-container">
+        <div class="header-container">
+            <h1>Prüfungs-Timer</h1>
+
+        </div>
+
+        <h2>Prüfungszeit</h2>
+        <div class="input-group">
+            <input id="time-input" type="number" min="1" placeholder="Dauer in Minuten, z.B. 45"
+                aria-label="Prüfungsdauer in Minuten">
+            <div id="error-message"></div>
+        </div>
+
+        <h2>Prüfungsregeln</h2>
+        <div id="predefined-rules">
+            <p class="predefined-rule active">Toilettengang !?</p>
+            <p class="predefined-rule active">Kein Essen und Trinken am Platz</p>
+            <p class="predefined-rule active">Alle technischen Geräte ausschalten und verstauen</p>
+            <p class="predefined-rule active">Keine Taschen / Jacken am Platz</p>
+            <p class="predefined-rule active">Keine Uhren</p>
+            <p class="predefined-rule active">Nur benötigtes Schreibmaterial – kein Mäppchen</p>
+            <p class="predefined-rule active">Keine Fragen, wenn die Zeit läuft</p>
+            <p class="predefined-rule active">Kein Rotstift</p>
+            <p class="predefined-rule active">Gerne auch Rückseite verwenden!</p>
+            <p class="predefined-rule active">Leserlich schreiben</p>
+            <p class="predefined-rule active">Zusatzzeit mir bitte melden!</p>
+        </div>
+
+        <h2>Eigene Notizen</h2>
+        <textarea id="checklist-input" rows="3" placeholder="Eigene Notizen hier eintragen..."></textarea>
+
+        <button id="start-btn" class="main-action-btn">Timer starten</button>
+    </div>
+
+    <!-- Ansicht 2: Laufender Timer -->
+    <div id="timer-view" class="view-container timer-layout-center">
+
+        <!-- Rules Top -->
+        <div id="checklist-container-top" class="rules-container">
+            <ul id="checklist-display-top" class="checklist-grid"></ul>
+        </div>
+
+        <!-- Center Timer & Controls -->
+        <div class="timer-center">
+
+            <div class="timer-main-row">
+                <div class="avatar-container">
+                    <img src="avatar.png" alt="Motivations-Avatar" class="avatar-img">
+                </div>
+
+                <div class="timer-digits-column">
+                    <div id="time-display">00:00</div>
+                    <div id="timer-controls">
+                        <button id="minus-one-btn" class="control-btn">- 1 min</button>
+                        <button id="pause-btn" class="control-btn">Pause</button>
+                        <button id="plus-one-btn" class="control-btn">+ 1 min</button>
+                        <button id="plus-ten-percent-btn" class="control-btn">+10%</button>
+                        <button id="plus-twenty-percent-btn" class="control-btn">+20%</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Bottom -->
+        <div id="checklist-container-bottom" class="rules-container">
+            <ul id="checklist-display-bottom" class="checklist-grid"></ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

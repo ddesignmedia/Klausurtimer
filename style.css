@@ -1,0 +1,376 @@
+/* Modern Dark Theme - DSGVO-konform (keine externen Quellen) */
+:root {
+    /* Farbpalette: Dark & Neon */
+    --bg-gradient-start: #0f172a;
+    /* Sehr dunkles Blau/Grau */
+    --bg-gradient-end: #1e293b;
+    /* Etwas helleres Dunkelgrau */
+
+    --card-bg: rgba(30, 41, 59, 0.7);
+    /* Glassmorphism Hintergrund */
+    --card-border: rgba(255, 255, 255, 0.1);
+
+    --text-primary: #f8fafc;
+    /* Fast Weiß */
+    --text-secondary: #94a3b8;
+    /* Kühles Grau */
+
+    --accent-color: #0ea5e9;
+    /* Sky Blue Neon */
+    --accent-glow: rgba(14, 165, 233, 0.5);
+
+    --btn-bg: #334155;
+    --btn-hover: #475569;
+
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --success-color: #22c55e;
+
+    /* Typografie - System Fonts Stack für maximale DSGVO Konformität & Performance */
+    --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    --border-radius: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-ui);
+    background: radial-gradient(circle at top right, #1e1b4b, var(--bg-gradient-start));
+    background-color: var(--bg-gradient-start);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Glassmorphism Container */
+/* Glassmorphism Container - WIDENED for Beamer */
+.view-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 95%;
+    /* Use almost full width */
+    max-width: 1600px;
+    /* Allow much wider layout */
+    max-height: 95vh;
+    /* Prevent scrolling off screen */
+    overflow-y: auto;
+    /* Allow internal scroll if absolutely necessary */
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Header & Typography */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(to right, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px var(--accent-glow);
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Inputs */
+input[type="number"],
+textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: var(--font-ui);
+}
+
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.main-action-btn {
+    display: block;
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.main-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+.control-btn {
+    background: #e2e8f0;
+    /* Light background */
+    color: #1e293b;
+    /* Dark text */
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+}
+
+.control-btn:hover {
+    background: #fff;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    /* Blue text on white background */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Timer Display */
+/* Timer Display Layout - SIDE BY SIDE */
+/* Timer Display Layout - CENTERED STACK */
+#timer-view.timer-layout-center {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Space out TopRules - Timer - BottomRules */
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
+}
+
+#timer-view[style*="display: flex"] {
+    display: flex !important;
+}
+
+.timer-center {
+    flex-grow: 1;
+    /* Allow timer to take available center space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.timer-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    /* Space between Image and Timer */
+    margin-bottom: 2rem;
+}
+
+.timer-digits-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-glow);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 225px;
+    /* Reduced by 10% from 250px */
+    height: 225px;
+    /* Reduced by 10% from 250px */
+    backdrop-filter: blur(5px);
+}
+
+.avatar-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+#time-display {
+    font-family: var(--font-mono);
+    font-size: clamp(7.2rem, 22.5vw, 18rem);
+    /* Reduced by 10% */
+    /* Even larger */
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    margin: 0;
+    margin-bottom: 1rem;
+    /* Add small space under digits for buttons */
+    /* Margin moved to row container */
+    line-height: .9;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+#time-display.time-warning {
+    color: var(--warning-color);
+    text-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+#time-display.time-danger {
+    color: var(--danger-color);
+    text-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+    animation: pulse 2s infinite;
+}
+
+#time-display.time-expired {
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--danger-color);
+}
+
+/* Timer Controls */
+/* Timer Controls - Compact row */
+#timer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    /* Removed width: 100% to wrap tightly under numbers */
+}
+
+/* Rules List */
+#predefined-rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsive Grid */
+    gap: 1rem;
+    text-align: left;
+}
+
+.predefined-rule {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0;
+    /* Override default p margin */
+    display: flex;
+    align-items: center;
+    border-left: 3px solid var(--accent-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.predefined-rule:hover {
+    filter: brightness(1.2);
+    transform: translateX(4px);
+}
+
+.predefined-rule:not(.active) {
+    opacity: 0.5;
+    border-left-color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Checklist Display in Timer View */
+/* Checklist Display - RIGHT COLUMN */
+/* Rules Containers */
+.rules-container {
+    width: 100%;
+}
+
+.checklist-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    justify-content: center;
+    gap: 1rem;
+}
+
+.checklist-grid li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    /* Pill shape */
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    border: 1px solid var(--card-border);
+    white-space: nowrap;
+    /* Try to keep rules on one line if possible */
+}
+
+/* Remove Checkmark */
+.checklist-grid li::before {
+    content: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Hide Dark Mode Toggle - App is now Dark Mode by default */
+.dark-mode-slider {
+    display: none;
+}
+
+/* Error Message */
+#error-message {
+    color: var(--danger-color);
+    font-weight: bold;
+    min-height: 1.5rem;
+    margin-top: 0.5rem;
+}
